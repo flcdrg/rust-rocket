@@ -1,6 +1,7 @@
-#[macro_use] extern crate rocket;
+#[macro_use]
+extern crate rocket;
 
-use rocket::serde::{Serialize, json::Json};
+use rocket::serde::{json::Json, Serialize};
 
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]
@@ -22,9 +23,7 @@ fn hello(name: &str) -> Json<HelloResponse> {
     })
 }
 
-
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount("/", routes![index, hello])
 }
-
